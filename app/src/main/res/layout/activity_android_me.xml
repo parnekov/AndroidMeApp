@@ -29,7 +29,11 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
 
-
+        <!--container for BodyItemFragment-->
+        <FrameLayout
+            android:id="@+id/container_for_head"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"/>
     </LinearLayout>
 
 </ScrollView>
