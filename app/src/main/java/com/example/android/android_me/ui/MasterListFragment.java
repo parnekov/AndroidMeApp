@@ -16,6 +16,10 @@ public class MasterListFragment extends Fragment {
     public MasterListFragment() {
     }
 
+    public interface OnItemImageClickListener {
+        void onItemClickImage(int position);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
