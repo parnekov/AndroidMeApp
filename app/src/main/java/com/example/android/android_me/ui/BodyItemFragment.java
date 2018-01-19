@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.android.android_me.R;
-import com.example.android.android_me.data.AndroidImageAssets;
 
 import java.util.List;
 
@@ -33,12 +32,26 @@ public class BodyItemFragment extends Fragment {
         View rootV = inflater.inflate(R.layout.body_image_view_layout, container, false);
 
         // get a reference for ImageView
-        ImageView imageView = (ImageView) rootV.findViewById(R.id.body_image_view_id);
+        final ImageView imageView = (ImageView) rootV.findViewById(R.id.body_image_view_id);
 
 
         // set image for display
         if (mIntegerList != null) {
             imageView.setImageResource(mIntegerList.get(mIntIndex));
+
+            imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mIntIndex < mIntegerList.size() - 1) {
+                        mIntIndex++;
+                    } else {
+                        mIntIndex = 0;
+                    }
+                    imageView.setImageResource(mIntegerList.get(mIntIndex));
+                }
+
+            });
+
         } else {
             Log.v(TAG, "This fragment has a null list of image id's");
         }
