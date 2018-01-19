@@ -76,17 +76,52 @@ public class MainActivity extends AppCompatActivity implements MasterListFragmen
         int listIndex = position - 12 * bodyPartNumber;
 
         // Set the currently displayed item for the correct body part fragment
-        switch (bodyPartNumber) {
-            case 0:
-                headIndex = listIndex;
-                break;
-            case 1:
-                bodyIndex = listIndex;
-                break;
-            case 2:
-                legsIndex = listIndex;
-            default:
-                break;
+        if (mTwoPane) {
+            BodyItemFragment itemFragment = new BodyItemFragment();
+            switch (bodyPartNumber) {
+                case 0:
+                    itemFragment.setIntegerList(AndroidImageAssets.getHeads());
+                    itemFragment.setIntIndex(listIndex);
+
+                    getSupportFragmentManager().beginTransaction()
+                            .add(R.id.container_for_head, itemFragment)
+                            .commit();
+                    break;
+
+                case 1:
+                    itemFragment.setIntegerList(AndroidImageAssets.getBodies());
+                    itemFragment.setIntIndex(listIndex);
+
+                    getSupportFragmentManager().beginTransaction()
+                            .add(R.id.container_for_body, itemFragment)
+                            .commit();
+                    break;
+
+                case 2:
+                    itemFragment.setIntegerList(AndroidImageAssets.getLegs());
+                    itemFragment.setIntIndex(listIndex);
+
+                    getSupportFragmentManager().beginTransaction()
+                            .add(R.id.container_for_legs, itemFragment)
+                            .commit();
+                    break;
+
+                default:
+                    break;
+            }
+        } else {
+            switch (bodyPartNumber) {
+                case 0:
+                    headIndex = listIndex;
+                    break;
+                case 1:
+                    bodyIndex = listIndex;
+                    break;
+                case 2:
+                    legsIndex = listIndex;
+                default:
+                    break;
+            }
         }
 
         // Put this information in a Bundle and attach it to an Intent that will launch an AndroidMeActivity
