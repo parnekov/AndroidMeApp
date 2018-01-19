@@ -11,12 +11,16 @@ import android.widget.ImageView;
 
 import com.example.android.android_me.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class BodyItemFragment extends Fragment {
 
     private static final String TAG = "BodyItemFragment";
+
+    private static final String ARRAY_IDS = "arrayIds";
+    private static final String INDEX_INT = "indexInt";
 
     private List<Integer> mIntegerList;
     private int mIntIndex;
@@ -28,6 +32,11 @@ public class BodyItemFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        if (savedInstanceState != null) {
+            mIntegerList = savedInstanceState.getIntegerArrayList(ARRAY_IDS);
+            mIntIndex = savedInstanceState.getInt(INDEX_INT);
+        }
         // inflate fragment layout
         View rootV = inflater.inflate(R.layout.body_image_view_layout, container, false);
 
@@ -65,5 +74,11 @@ public class BodyItemFragment extends Fragment {
 
     public void setIntIndex(int intIndex) {
         mIntIndex = intIndex;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putIntegerArrayList(ARRAY_IDS, (ArrayList<Integer>) mIntegerList);
+        outState.putInt(INDEX_INT, mIntIndex);
     }
 }
