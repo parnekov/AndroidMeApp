@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:baselineAligned="false"
+              android:orientation="horizontal"
+              tools:context=".ui.MainActivity">
+
+    <fragment
+        android:id="@+id/master_list_fragment"
+        android:name="com.example.android.android_me.ui.MasterListFragment"
+        android:layout_width="400dp"
+        android:layout_height="match_parent"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:color/white"
+        android:layout_gravity="center_vertical"
+        android:padding="16dp">
+
+        <!--containers for BodyItemFragment-->
+        <FrameLayout
+            android:id="@+id/container_for_head"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerInside"/>
+
+        <FrameLayout
+            android:id="@+id/container_for_body"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerInside"/>
+
+        <FrameLayout
+            android:id="@+id/container_for_legs"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:scaleType="centerInside"/>
+
+    </LinearLayout>
+
+</LinearLayout>
